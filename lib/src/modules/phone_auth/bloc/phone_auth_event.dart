@@ -24,3 +24,4 @@ class TermsAndConditionsToggled extends PhoneAuthEvent {
 }
 
 class SendOtpPressed extends PhoneAuthEvent {}
+class VerifyOtp extends PhoneAuthEvent {}

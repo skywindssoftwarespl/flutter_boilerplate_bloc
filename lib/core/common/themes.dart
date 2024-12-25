@@ -65,6 +65,9 @@ ThemeData themeDark(BuildContext context) {
       disabledColor: ColorDark.disabledButton,
       hintColor: ColorDark.fontSubtitle,
       indicatorColor: ColorDark.primary,
+      colorScheme: ColorScheme.dark(
+        outline: ColorDark.fontDisable,
+        onSecondary: ColorDark.hintText, onSurface: ColorDark.fontTitle),
       iconTheme: const IconThemeData(
         color: ColorDark.fontTitle,
       ),
@@ -79,6 +82,7 @@ ThemeData themeDark(BuildContext context) {
       ),
       scaffoldBackgroundColor: ColorDark.background,
       appBarTheme: const AppBarTheme(
+        backgroundColor: ColorDark.background,
         elevation: 0,
         centerTitle: true,
       ),
@@ -111,6 +115,18 @@ ThemeData themeDark(BuildContext context) {
         bodySmall: TextStyle(
           fontFamily: fontFamilyRegular,
           fontSize: 16,
+          fontWeight: FontWeight.w400,
+          color: ColorDark.fontTitle,
+        ),
+        titleSmall: TextStyle(
+          fontFamily: fontFamilyRegular,
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+          color: ColorDark.fontTitle,
+        ),
+        displayMedium: TextStyle(
+          fontFamily: fontFamilyRegular,
+          fontSize: 20,
           fontWeight: FontWeight.w400,
           color: ColorDark.fontTitle,
         ),

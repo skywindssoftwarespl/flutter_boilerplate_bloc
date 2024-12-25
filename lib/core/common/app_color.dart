@@ -29,8 +29,9 @@ class ColorDark {
   static const Color card = Color(0xFF1A1A1A);
   static const Color fontTitle = Color(0xFFFFFFFF);
   static const Color fontSubtitle = Color(0xFFF6F6F6);
-  static const Color fontDisable = Color(0xFF989898);
-  static const Color disabledButton = Color(0xFF6E6E6E);
+  static const Color fontDisable = Color(0xFFb3b3b3);
+  static const Color disabledButton = Color(0xFFb3b3b3);
+  static const Color hintText = Color(0xff666666);
   static const Color divider = Color(0xFF494949);
 
   static const Color success = Color.fromARGB(255, 98, 249, 106);
