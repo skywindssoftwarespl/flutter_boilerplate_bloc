@@ -15,17 +15,16 @@ Future<void> main() async {
         supportedLocales: const [Locale('en', 'US'), Locale('fr', 'FR')],
         path: 'assets/translations',
         fallbackLocale: const Locale('en', 'US'),
-        child: const MyApp()),
+        child: MyApp()),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+  AppRouter appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    AppRouter appRouter = AppRouter();
-
     return BlocProvider(
       create: (context) => InternetCubit(),
       child: MaterialApp.router(

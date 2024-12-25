@@ -3,6 +3,7 @@ class UIPadding {
     throw UnimplementedError();
   }
   static const radius = 5.0;
+  static const radius20 = 20.0;
   static const space4 = 4.0;
   static const space8 = 8.0;
   static const space12 = 12.0;

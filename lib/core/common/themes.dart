@@ -1,163 +1,118 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'app_color.dart';
 
+String fontFamilyRegular = 'gilroy';
+String fontFamilyBold = 'gilroy-bold';
 ThemeData themeLight(BuildContext context) {
   return ThemeData(
-    brightness: Brightness.light,
-    cardColor: ColorLight.card,
-    disabledColor: ColorLight.disabledButton,
-    // highlightColor: ColorLight.fontTitle,
-    hintColor: ColorLight.fontSubtitle,
-    indicatorColor: ColorLight.primary,
-    iconTheme: const IconThemeData(
-      color: ColorLight.fontTitle,
-    ),
-    primaryColor: ColorLight.primary,
-    textSelectionTheme: const TextSelectionThemeData(
-      cursorColor: ColorLight.primary,
-    ),
-    checkboxTheme: const CheckboxThemeData(
-      side: BorderSide(
-        color: ColorLight.disabledButton,
-      ),
-    ),
-    scaffoldBackgroundColor: ColorLight.background,
-    appBarTheme: const AppBarTheme(
-      elevation: 0,
-      centerTitle: true,
-    ),
-    textTheme: GoogleFonts.ralewayTextTheme().copyWith(
-      displayLarge: GoogleFonts.raleway(
+      brightness: Brightness.light,
+      cardColor: ColorLight.card,
+      disabledColor: ColorLight.disabledButton,
+      highlightColor: ColorLight.fontTitle,
+      hintColor: ColorLight.fontSubtitle,
+      indicatorColor: ColorLight.primary,
+      iconTheme: const IconThemeData(
         color: ColorLight.fontTitle,
-        fontSize: 20,
-        fontWeight: FontWeight.w500,
       ),
-      displayMedium: GoogleFonts.raleway(
-        color: ColorLight.fontTitle,
-        fontSize: 18,
-        fontWeight: FontWeight.w500,
+      primaryColor: ColorLight.primary,
+      textSelectionTheme: const TextSelectionThemeData(
+        cursorColor: ColorLight.primary,
       ),
-      displaySmall: GoogleFonts.raleway(
-        color: ColorLight.fontTitle,
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
+      checkboxTheme: const CheckboxThemeData(
+        side: BorderSide(
+          color: ColorLight.disabledButton,
+        ),
       ),
-      headlineMedium: GoogleFonts.raleway(
-        color: ColorLight.fontTitle,
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
+      scaffoldBackgroundColor: ColorLight.background,
+      appBarTheme: const AppBarTheme(
+        elevation: 0,
+        centerTitle: true,
       ),
-      headlineSmall: GoogleFonts.raleway(
-        color: ColorLight.fontTitle,
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-      ),
-      bodyLarge: GoogleFonts.raleway(
-        color: ColorLight.fontTitle,
-        fontSize: 16,
-        fontWeight: FontWeight.normal,
-      ),
-      bodyMedium: GoogleFonts.raleway(
-        color: ColorLight.fontTitle,
-        fontSize: 14,
-        fontWeight: FontWeight.normal,
-      ),
-      titleMedium: GoogleFonts.raleway(
-        color: ColorLight.fontSubtitle,
-        fontSize: 14,
-        fontWeight: FontWeight.normal,
-      ),
-      titleSmall: GoogleFonts.raleway(
-        color: ColorLight.fontSubtitle,
-        fontSize: 12,
-        fontWeight: FontWeight.normal,
-      ),
-      labelLarge: GoogleFonts.raleway(
-        color: Colors.white,
-        fontSize: 14,
-        fontWeight: FontWeight.normal,
-      ),
-    ),
-  );
+      textTheme: TextTheme(
+        headlineMedium: TextStyle(
+          fontFamily: fontFamilyRegular,
+          fontSize: 35,
+          fontWeight: FontWeight.w400,
+          color: ColorLight.card,
+        ),
+        headlineSmall: TextStyle(
+            fontFamily: fontFamilyRegular,
+            fontSize: 24,
+            fontWeight: FontWeight.w400,
+            color: Color(0xfff7f7f7),
+            height: 0),
+        labelSmall: TextStyle(fontFamily: fontFamilyRegular, fontSize: 12, color: ColorLight.card),
+        labelMedium: TextStyle(
+          fontFamily: fontFamilyRegular,
+          fontSize: 24,
+          color: ColorLight.card,
+          fontWeight: FontWeight.w400,
+        ),
+        bodyMedium: TextStyle(
+          fontFamily: fontFamilyRegular,
+          fontSize: 36,
+          fontWeight: FontWeight.w400,
+          color: ColorLight.card,
+        ),
+      ));
 }
 
 ThemeData themeDark(BuildContext context) {
   return ThemeData(
-    brightness: Brightness.dark,
-    cardColor: ColorDark.card,
-    disabledColor: ColorDark.disabledButton,
-    hintColor: ColorDark.fontSubtitle,
-    indicatorColor: ColorLight.primary,
-    iconTheme: const IconThemeData(
-      color: ColorDark.fontTitle,
-    ),
-    primaryColor: ColorLight.primary,
-    textSelectionTheme: const TextSelectionThemeData(
-      cursorColor: ColorLight.primary,
-    ),
-    checkboxTheme: const CheckboxThemeData(
-      side: BorderSide(
-        color: ColorLight.disabledButton,
-      ),
-    ),
-    scaffoldBackgroundColor: ColorDark.background,
-    appBarTheme: const AppBarTheme(
-      elevation: 0,
-      centerTitle: true,
-    ),
-    textTheme: GoogleFonts.ralewayTextTheme().copyWith(
-      displayLarge: GoogleFonts.raleway(
+      brightness: Brightness.dark,
+      cardColor: ColorDark.card,
+      disabledColor: ColorDark.disabledButton,
+      hintColor: ColorDark.fontSubtitle,
+      indicatorColor: ColorDark.primary,
+      iconTheme: const IconThemeData(
         color: ColorDark.fontTitle,
-        fontSize: 20,
-        fontWeight: FontWeight.w500,
       ),
-      displayMedium: GoogleFonts.raleway(
-        color: ColorDark.fontTitle,
-        fontSize: 18,
-        fontWeight: FontWeight.w500,
+      primaryColor: ColorDark.primary,
+      textSelectionTheme: const TextSelectionThemeData(
+        cursorColor: ColorDark.primary,
       ),
-      displaySmall: GoogleFonts.raleway(
-        color: ColorDark.fontTitle,
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
+      checkboxTheme: const CheckboxThemeData(
+        side: BorderSide(
+          color: ColorDark.disabledButton,
+        ),
       ),
-      headlineMedium: GoogleFonts.raleway(
-        color: ColorDark.fontTitle,
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
+      scaffoldBackgroundColor: ColorDark.background,
+      appBarTheme: const AppBarTheme(
+        elevation: 0,
+        centerTitle: true,
       ),
-      headlineSmall: GoogleFonts.raleway(
-        color: ColorDark.fontTitle,
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-      ),
-      bodyLarge: GoogleFonts.raleway(
-        color: ColorDark.fontTitle,
-        fontSize: 16,
-        fontWeight: FontWeight.normal,
-      ),
-      bodyMedium: GoogleFonts.raleway(
-        color: ColorDark.fontTitle,
-        fontSize: 14,
-        fontWeight: FontWeight.normal,
-      ),
-      titleMedium: GoogleFonts.raleway(
-        color: ColorDark.fontSubtitle,
-        fontSize: 14,
-        fontWeight: FontWeight.normal,
-      ),
-      titleSmall: GoogleFonts.raleway(
-        color: ColorDark.fontSubtitle,
-        fontSize: 12,
-        fontWeight: FontWeight.normal,
-      ),
-      labelLarge: GoogleFonts.raleway(
-        color: Colors.white,
-        fontSize: 14,
-        fontWeight: FontWeight.normal,
-      ),
-    ),
-  );
+      textTheme: TextTheme(
+        headlineMedium: TextStyle(
+          fontFamily: fontFamilyBold,
+          fontSize: 35,
+          fontWeight: FontWeight.w400,
+          color: ColorDark.fontTitle,
+        ),
+        headlineSmall: TextStyle(
+            fontFamily: fontFamilyRegular,
+            fontSize: 24,
+            fontWeight: FontWeight.w400,
+            color: Color(0xfff7f7f7),
+            height: 0),
+        labelSmall: TextStyle(fontFamily: fontFamilyRegular, fontSize: 12, color: ColorLight.card),
+        labelMedium: TextStyle(
+          fontFamily: fontFamilyRegular,
+          fontSize: 24,
+          color: ColorDark.fontSubtitle,
+          fontWeight: FontWeight.w400,
+        ),
+        bodyMedium: TextStyle(
+          fontFamily: fontFamilyRegular,
+          fontSize: 36,
+          fontWeight: FontWeight.w400,
+          color: ColorDark.fontTitle,
+        ),
+        bodySmall: TextStyle(
+          fontFamily: fontFamilyRegular,
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          color: ColorDark.fontTitle,
+        ),
+      ));
 }
