@@ -33,6 +33,9 @@ class ColorDark {
   static const Color disabledButton = Color(0xFFb3b3b3);
   static const Color hintText = Color(0xff666666);
   static const Color divider = Color(0xFF494949);
+  static const Color border = Color(0xFFE1E1E1);
+  static const Color shadowColor = Color(0xFF04CA96);
+  static const Color borderShadow = Color(0xff5A5A5A);
 
   static const Color success = Color.fromARGB(255, 98, 249, 106);
   static const Color warning = Color(0xFFF57C00);

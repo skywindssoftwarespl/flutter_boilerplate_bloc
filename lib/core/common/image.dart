@@ -16,4 +16,16 @@ class Images {
   static const String videoPlaylist = "assets/images/video_playlist.svg";
   static const String profile = "assets/images/profile.png";
   static const String chat1 = "assets/images/chat1.svg";
+  static const String bottomHome = "assets/images/bottom-home.svg";
+  static const String bottomChat = "assets/images/bottom-chat.svg";
+  static const String bottomCreate = "assets/images/bottom-create.svg";
+  static const String bottomVideo = "assets/images/bottom-video.svg";
+  static const String bottomEvent = "assets/images/bottom-event.svg";
+  static const String cloud = "assets/images/Cloud.svg";
+  static const String play = "assets/images/play.svg";
+  static const String menuDot = "assets/images/menu_dot.svg";
+  static const String rightArrow = "assets/images/Right.svg";
+  static const String event = "assets/images/event.jpeg";
+  static const String calender = "assets/images/calender.svg";
+  static const String location = "assets/images/Location.svg";
 }

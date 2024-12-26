@@ -66,8 +66,13 @@ ThemeData themeDark(BuildContext context) {
       hintColor: ColorDark.fontSubtitle,
       indicatorColor: ColorDark.primary,
       colorScheme: ColorScheme.dark(
-        outline: ColorDark.fontDisable,
-        onSecondary: ColorDark.hintText, onSurface: ColorDark.fontTitle),
+          background: ColorDark.background,
+          outline: ColorDark.fontDisable,
+          outlineVariant: ColorDark.border,
+          onSecondary: ColorDark.hintText,
+          onSurface: ColorDark.fontTitle,
+          onSurfaceVariant: ColorDark.borderShadow,
+          onInverseSurface: ColorDark.shadowColor),
       iconTheme: const IconThemeData(
         color: ColorDark.fontTitle,
       ),

@@ -13,6 +13,11 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: OtpRoute.page),
         AutoRoute(page: BasicDetailRoute.page),
         AutoRoute(page: ArtistProfileRoute.page),
-        AutoRoute(page: CommentRoute.page, initial: true),
+        AutoRoute(page: CommentRoute.page),
+        AutoRoute(page: BasicHome.page, initial: true),
+        AutoRoute(page: SearchRoute.page),
+        AutoRoute(page: ChatRoute.page),
+        AutoRoute(page: EventRoute.page),
+        AutoRoute(page: EventDetailRoute.page),
       ];
 }

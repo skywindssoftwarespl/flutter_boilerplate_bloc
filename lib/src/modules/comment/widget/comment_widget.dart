@@ -51,7 +51,7 @@ class CommentWidget extends StatelessWidget {
           style: theme.textTheme.bodySmall,
         ),
         SizedBox(
-          height: 10,
+          height: 10
         )
       ],
     );

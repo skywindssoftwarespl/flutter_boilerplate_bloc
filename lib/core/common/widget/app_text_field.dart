@@ -33,7 +33,8 @@ class AppTextField extends StatelessWidget {
       this.onTapOutside,
       this.autovalidateMode = AutovalidateMode.disabled,
       this.isError = false,
-      this.style});
+      this.style,
+      this.borderSide});
 
   final TextEditingController? controller;
 
@@ -64,6 +65,7 @@ class AppTextField extends StatelessWidget {
   AutovalidateMode autovalidateMode;
   final bool isError;
   final TextStyle? style;
+  final BorderSide? borderSide;
 
   @override
   Widget build(BuildContext context) {
@@ -105,9 +107,9 @@ class AppTextField extends StatelessWidget {
         helperStyle: theme.textTheme.bodyMedium?.copyWith(fontSize: 10),
         contentPadding: const EdgeInsets.symmetric(horizontal: UIPadding.space12, vertical: UIPadding.space12),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(UIPadding.radius10),
-          borderSide: BorderSide.none,
-        ),
+            borderRadius: BorderRadius.circular(UIPadding.radius10),
+            // borderSide: BorderSide.none,
+            borderSide: borderSide ?? BorderSide.none),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(UIPadding.radius10),
           borderSide: BorderSide(color: isError ? theme.colorScheme.error : Colors.grey),
