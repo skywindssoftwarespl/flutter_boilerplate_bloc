@@ -28,4 +28,11 @@ class Images {
   static const String event = "assets/images/event.jpeg";
   static const String calender = "assets/images/calender.svg";
   static const String location = "assets/images/Location.svg";
+  static const String user = "assets/images/User.svg";
+  static const String support = "assets/images/support.svg";
+  static const String playlist = "assets/images/VideoPlaylist.svg";
+  static const String logout = "assets/images/Logout.svg";
+  static const String savedVideo = "assets/images/Group.svg";
+  static const String editPen = "assets/images/Edit_pen.svg";
+  static const String delete = "assets/images/delete.svg";
 }

@@ -36,6 +36,7 @@ class ColorDark {
   static const Color border = Color(0xFFE1E1E1);
   static const Color shadowColor = Color(0xFF04CA96);
   static const Color borderShadow = Color(0xff5A5A5A);
+  static const Color borderTextField = Color(0xff555555);
 
   static const Color success = Color.fromARGB(255, 98, 249, 106);
   static const Color warning = Color(0xFFF57C00);

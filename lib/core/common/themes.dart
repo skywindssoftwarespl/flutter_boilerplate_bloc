@@ -68,6 +68,8 @@ ThemeData themeDark(BuildContext context) {
       colorScheme: ColorScheme.dark(
           background: ColorDark.background,
           outline: ColorDark.fontDisable,
+          error: ColorDark.error,
+          onSecondaryContainer: ColorDark.borderTextField,
           outlineVariant: ColorDark.border,
           onSecondary: ColorDark.hintText,
           onSurface: ColorDark.fontTitle,

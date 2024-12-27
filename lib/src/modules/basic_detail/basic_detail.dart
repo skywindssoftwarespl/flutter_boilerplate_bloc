@@ -1,15 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:musicana/core/common/extension/string_validator_extension.dart';
-import 'package:musicana/core/common/widget/app_text_field.dart';
-import 'package:musicana/core/utility/route/app_router.gr.dart';
-import 'package:musicana/src/modules/basic_detail/bloc/basic_detail_bloc.dart';
-import 'package:otp_text_field/otp_text_field.dart';
-import 'package:otp_text_field/style.dart';
 
+import '../../../core/common/extension/string_validator_extension.dart';
+import '../../../core/common/widget/app_text_field.dart';
+import '../../../core/utility/route/app_router.gr.dart';
+import 'bloc/basic_detail_bloc.dart';
 import '../../../../core/common/image.dart';
 import '../../../../core/common/widget/custom_image_view.dart';
 import 'bloc/basic_detail_event.dart';
@@ -32,7 +29,7 @@ class BasicDetailScreen extends StatelessWidget {
             child: BlocConsumer<BasicDetailBloc, BasicDetailState>(
               listener: (context, state) {
                 if (state is Success) {
-                  context.router.push(Home());
+                  context.router.push(BasicHome());
                 }
               },
               builder: (context, state) {

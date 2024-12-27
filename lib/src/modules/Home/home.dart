@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:musicana/core/common/widget/custom_image_view.dart';
+import 'package:musicana/core/utility/route/app_router.gr.dart';
 
 import '../../../core/common/image.dart';
 import '../home/bloc/home_event.dart';
@@ -32,10 +33,18 @@ class _HomeState extends State<Home> {
                 padding: const EdgeInsets.all(15.0),
                 child: Row(
                   children: [
-                    Container(
-                      height: 55,
-                      width: 55,
-                      decoration: BoxDecoration(shape: BoxShape.circle, color: theme.colorScheme.onSecondary),
+                    GestureDetector(
+                      onTap: () {
+                        context.router.push(ArtistProfileRoute());
+                      },
+                      child: Container(
+                        height: 55,
+                        width: 55,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(image: AssetImage(Images.profile)),
+                            shape: BoxShape.circle,
+                            color: theme.colorScheme.onSecondary),
+                      ),
                     ),
                     const SizedBox(width: 10),
                     Column(
@@ -151,6 +160,4 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-
-  
 }

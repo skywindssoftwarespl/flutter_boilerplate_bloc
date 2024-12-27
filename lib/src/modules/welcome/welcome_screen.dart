@@ -14,10 +14,12 @@ import 'widget/welcome_content.dart';
 class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return SafeArea(
       child: BlocProvider(
         create: (_) => WelcomeBloc(),
         child: Scaffold(
+          backgroundColor: theme.hintColor,
           body: BlocConsumer<WelcomeBloc, WelcomeState>(
             listener: (context, state) {
               if (state is GoToAuth) {
@@ -49,12 +51,6 @@ class WelcomeScreen extends StatelessWidget {
               }
             },
           ),
-          // floatingActionButton: FloatingActionButton(
-          //   onPressed: () {
-          //     context.read<WelcomeBloc>().add(NextScreenEvent());
-          //   },
-          //   child: Icon(Icons.arrow_forward),
-          // ),
         ),
       ),
     );

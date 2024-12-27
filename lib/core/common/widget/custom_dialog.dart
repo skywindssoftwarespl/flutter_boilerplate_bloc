@@ -5,6 +5,7 @@ import '../ui_padding.dart';
 import '../../../src/cubit/theme/theme_cubit.dart';
 import '../app_color.dart';
 import '../screen.dart';
+import 'app_text_field.dart';
 import 'button.dart';
 import 'custom_outlined_button.dart';
 
@@ -122,8 +123,7 @@ Future<dynamic> showConfirmationDialog(
       return BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {
           return AlertDialog(
-            backgroundColor:
-                (state is ThemeDark) ? ColorDark.card : ColorLight.card,
+            backgroundColor: (state is ThemeDark) ? ColorDark.card : ColorLight.card,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(UIPadding.radius),
             ),
@@ -146,12 +146,8 @@ Future<dynamic> showConfirmationDialog(
                       children: [
                         Expanded(
                           child: CustomOutlinedButton(
-                            onTap: (onSecondaryButtonTap == null)
-                                ? () => Navigator.pop(context)
-                                : onSecondaryButtonTap,
-                            label: (secondaryButtonLabel == null)
-                                ? 'Back'
-                                : secondaryButtonLabel,
+                            onTap: (onSecondaryButtonTap == null) ? () => Navigator.pop(context) : onSecondaryButtonTap,
+                            label: (secondaryButtonLabel == null) ? 'Back' : secondaryButtonLabel,
                           ),
                         ),
                         const SizedBox(width: 15),
@@ -210,6 +206,85 @@ class _BuildButtonIcon extends StatelessWidget {
             style: theme.textTheme.displaySmall,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class CustomDialog extends StatelessWidget {
+  const CustomDialog({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Dialog(
+      child: Container(
+        padding: EdgeInsets.all(15),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            color: theme.cardColor,
+            border: Border.all(color: theme.colorScheme.onSecondaryContainer)),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Text("Are you sure you want to delete this playlist?",
+                      textAlign: TextAlign.center, style: theme.textTheme.bodySmall?.copyWith(fontSize: 20)),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    "Deleting this playlist will permanently remove it from your library. This action cannot be undone.",
+                    textAlign: TextAlign.center,
+                    style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSecondaryContainer),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.all(12),
+                      child: Center(
+                        child: Text(
+                          "Cancel",
+                          style: theme.textTheme.titleSmall,
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          color: theme.colorScheme.onSecondaryContainer),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.all(12),
+                      child: Center(
+                        child: Text(
+                          "Delete",
+                          style: theme.textTheme.titleSmall,
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)), color: theme.colorScheme.error),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
