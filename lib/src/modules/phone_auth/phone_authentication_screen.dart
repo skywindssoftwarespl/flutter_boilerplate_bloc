@@ -1,38 +1,55 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:bloc_presentation/bloc_presentation.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:musicana/core/common/widget/toast.dart';
 import 'package:musicana/core/utility/route/app_router.gr.dart';
+import 'package:musicana/src/modules/phone_auth/bloc/phone_auth_ui_effect.dart';
 import 'package:musicana/src/modules/phone_auth/widget/otp_screen.dart';
 
 import '../../../core/common/extension/string_validator_extension.dart';
 import '../../../core/common/widget/app_text_field.dart';
 import '../../../core/common/image.dart';
 import '../../../core/common/widget/custom_image_view.dart';
+import '../../../core/network/repository/user_repository.dart';
+import '../../../core/utility/injectable.dart';
 import 'bloc/phone_auth_state.dart';
 import 'bloc/phone_auth_bloc.dart';
 import 'bloc/phone_auth_event.dart';
 
 @RoutePage()
 class PhoneAuthenticationScreen extends StatelessWidget {
-  const PhoneAuthenticationScreen({super.key});
+  PhoneAuthenticationScreen({super.key});
+  UserRepository userRepository = getIt<UserRepository>();
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return SafeArea(
-      child: BlocProvider(
-        create: (_) => PhoneAuthBloc(),
-        child: Scaffold(
-          resizeToAvoidBottomInset: false,
-          backgroundColor: Colors.black,
-          body: Padding(
-            padding: const EdgeInsets.all(16.0),
+        child: BlocProvider(
+      create: (_) => PhoneAuthBloc(userRepository: userRepository),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.black,
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: BlocPresentationListener<PhoneAuthBloc, PhoneAuthUiEffect>(
+            listener: (context, effect) {
+              // TODO: implement listener
+
+              if (effect is SentOTP) {
+                if (effect.sentOtp == true) {
+                  context.router.push(OtpRoute(phoneNumber: effect.phoneNumber));
+                }
+              
+              }
+            },
             child: BlocConsumer<PhoneAuthBloc, PhoneAuthState>(
               listener: (context, state) {
-                if (state.otpSent == true) {
-                  context.router.push(OtpRoute());
+                if (state.errorMessage != null) {
+                  showToast(msg: state.errorMessage ?? "");
                 }
               },
               builder: (context, state) {
@@ -40,7 +57,7 @@ class PhoneAuthenticationScreen extends StatelessWidget {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Image.asset(Images.LOGOPNG, height: 120, width: 120),
                     const SizedBox(height: 20),
                     Text(
@@ -66,10 +83,11 @@ class PhoneAuthenticationScreen extends StatelessWidget {
                       textInputType: TextInputType.phone,
                       textInputAction: TextInputAction.done,
                       controller: bloc.phoneController,
+                      maxLength: 10,
                       onTapOutside: (out) {
                         FocusScope.of(context).requestFocus(FocusNode());
                       },
-                      hintText: "99XXXXXXXX",
+                      hintText: "phone_number_hint".tr(),
                       onChanged: (value) {
                         bloc.add(MobileNumberChanged(value));
                       },
@@ -85,14 +103,13 @@ class PhoneAuthenticationScreen extends StatelessWidget {
                         ),
                         RichText(
                           text: TextSpan(
-                            text: 'Accept ',
+                            text: "${'accept'.tr()} ",
                             style: theme.textTheme.bodySmall,
                             children: [
                               TextSpan(
                                 text: 'Terms and Conditions',
                                 style: theme.textTheme.bodySmall?.copyWith(
                                   color: theme.primaryColor,
-                                  decoration: TextDecoration.underline,
                                 ),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
@@ -151,13 +168,13 @@ class PhoneAuthenticationScreen extends StatelessWidget {
                               ),
                               textAlign: TextAlign.center,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 60,
                             ),
                             state.isSendingOtp
-                                ? Padding(
-                                    padding: const EdgeInsets.only(right: 8.0),
-                                    child: const CircularProgressIndicator(color: Colors.white),
+                                ? const Padding(
+                                    padding: EdgeInsets.only(right: 12.0),
+                                    child: CircularProgressIndicator(color: Colors.white),
                                   )
                                 : Padding(
                                     padding: const EdgeInsets.all(2.0),
@@ -168,7 +185,7 @@ class PhoneAuthenticationScreen extends StatelessWidget {
                                         color: Color(0xffF0F0F0),
                                         borderRadius: BorderRadius.all(Radius.circular(55)),
                                       ),
-                                      child: Center(
+                                      child: const Center(
                                         child: CustomImageView(
                                           svgPath: Images.arrowRight, // Add your custom icon path
                                         ),
@@ -186,6 +203,6 @@ class PhoneAuthenticationScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ));
   }
 }

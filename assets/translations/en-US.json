@@ -1,3 +1,7 @@
 {
-    "home": "Home"
+    "home": "Home",
+    "valid_number": "Please enter valid phone number",
+    "fill_number": "Phone number should not be empty",
+    "phone_number_hint": "99XXXXXXXX",
+    "accept": "Accept"
 }

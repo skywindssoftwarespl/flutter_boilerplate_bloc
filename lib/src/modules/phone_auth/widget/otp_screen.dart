@@ -1,15 +1,12 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:musicana/core/common/extension/string_validator_extension.dart';
-import 'package:musicana/core/common/widget/app_text_field.dart';
-import 'package:musicana/core/utility/route/app_router.gr.dart';
-import 'package:musicana/src/modules/basic_detail/basic_detail.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
 
+import '../../../../core/network/repository/user_repository.dart';
+import '../../../../core/utility/injectable.dart';
+import '../../../../core/utility/route/app_router.gr.dart';
 import '../../../../core/common/image.dart';
 import '../../../../core/common/widget/custom_image_view.dart';
 import '../bloc/phone_auth_bloc.dart';
@@ -18,14 +15,15 @@ import '../bloc/phone_auth_state.dart';
 
 @RoutePage()
 class OtpScreen extends StatelessWidget {
-  const OtpScreen({super.key});
-
+  String? phoneNumber;
+  OtpScreen({super.key, this.phoneNumber});
+  UserRepository userRepository = getIt<UserRepository>();
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return SafeArea(
       child: BlocProvider(
-        create: (_) => PhoneAuthBloc(),
+        create: (_) => PhoneAuthBloc(userRepository: userRepository),
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           backgroundColor: Colors.black,
@@ -33,8 +31,10 @@ class OtpScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: BlocConsumer<PhoneAuthBloc, PhoneAuthState>(
               listener: (context, state) {
-                if (state.verified == true) {
-                  context.router.push(BasicDetailRoute());
+                if (state.verified == true && state.register == true) {
+                  context.router.replaceAll([BasicDetailRoute()]);
+                } else if (state.verified == true && state.register == false) {
+                  context.router.replaceAll([Home()]);
                 }
               },
               builder: (context, state) {
@@ -70,7 +70,9 @@ class OtpScreen extends StatelessWidget {
                       outlineBorderRadius: 12,
                       style: theme.textTheme.bodySmall ?? TextStyle(fontSize: 12),
                       textFieldAlignment: MainAxisAlignment.spaceBetween,
-                      onChanged: (value) {},
+                      onChanged: (value) {
+                        bloc.add(OtpChanged(value));
+                      },
                       onCompleted: (pin) {
                         // controller.smsPin.value = pin;
                       },
@@ -85,7 +87,7 @@ class OtpScreen extends StatelessWidget {
                       onTap: state.isSendingOtp
                           ? null
                           : () {
-                              bloc.add(VerifyOtp());
+                              bloc.add(VerifyOtp(phoneNumber: phoneNumber));
                             },
                       child: Container(
                         height: 73,
@@ -107,7 +109,7 @@ class OtpScreen extends StatelessWidget {
                             const SizedBox(width: 60),
                             state.isSendingOtp
                                 ? const Padding(
-                                    padding: EdgeInsets.only(right: 8.0),
+                                    padding: EdgeInsets.only(right: 12.0),
                                     child: CircularProgressIndicator(color: Colors.white))
                                 : Padding(
                                     padding: const EdgeInsets.all(2.0),

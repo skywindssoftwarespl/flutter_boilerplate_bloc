@@ -67,11 +67,16 @@ class _HomeState extends State<Home> {
                       child: Center(child: CustomImageView(height: 25, width: 25, svgPath: Images.notification)),
                     ),
                     SizedBox(width: 5),
-                    Container(
-                      height: 45,
-                      width: 45,
-                      decoration: BoxDecoration(shape: BoxShape.circle, color: theme.colorScheme.onSecondary),
-                      child: Center(child: CustomImageView(height: 25, width: 25, svgPath: Images.search)),
+                    GestureDetector(
+                      onTap: () {
+                        context.router.push(SearchRoute());
+                      },
+                      child: Container(
+                        height: 45,
+                        width: 45,
+                        decoration: BoxDecoration(shape: BoxShape.circle, color: theme.colorScheme.onSecondary),
+                        child: Center(child: CustomImageView(height: 25, width: 25, svgPath: Images.search)),
+                      ),
                     ),
                   ],
                 ),

@@ -5,11 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../core/common/themes.dart';
 import '../core/utility/connectivity/internet_cubit.dart';
 import '../core/utility/connectivity/internet_dialog.dart';
+import '../core/utility/injectable.dart';
 import '../core/utility/route/app_router.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await setupLocator();
+
   runApp(
     EasyLocalization(
         supportedLocales: const [Locale('en', 'US'), Locale('fr', 'FR')],

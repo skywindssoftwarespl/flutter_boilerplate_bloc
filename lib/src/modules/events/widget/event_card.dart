@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:musicana/core/common/widget/custom_image_view.dart';
+import 'package:musicana/core/utility/route/app_router.gr.dart';
 import 'package:musicana/src/modules/events/model/event_model.dart';
 
 import '../../../../core/common/image.dart';
@@ -76,23 +78,28 @@ class EventCard extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.teal.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 6,
-                                offset: Offset(0, 1),
-                              ),
-                            ],
-                            color: Colors.black,
-                            border: Border.all(color: theme.colorScheme.onSurfaceVariant),
-                            borderRadius: BorderRadius.all(Radius.circular(10))),
-                        child: Text("Play all video songs", style: theme.textTheme.titleSmall),
+                    GestureDetector(
+                      onTap: () {
+                        context.router.push(EventDetailRoute());
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+                          decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.teal.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 6,
+                                  offset: Offset(0, 1),
+                                ),
+                              ],
+                              color: Colors.black,
+                              border: Border.all(color: theme.colorScheme.onSurfaceVariant),
+                              borderRadius: BorderRadius.all(Radius.circular(10))),
+                          child: Text("Play all video songs", style: theme.textTheme.titleSmall),
+                        ),
                       ),
                     )
                   ],

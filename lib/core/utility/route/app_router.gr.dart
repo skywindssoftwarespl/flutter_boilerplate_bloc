@@ -9,6 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i21;
+import 'package:flutter/material.dart' as _i22;
 import 'package:musicana/src/modules/artist_profile/artist_profile_screen.dart'
     as _i1;
 import 'package:musicana/src/modules/basic_detail/basic_detail.dart' as _i2;
@@ -246,10 +247,17 @@ class LoginRoute extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i12.OtpScreen]
-class OtpRoute extends _i21.PageRouteInfo<void> {
-  const OtpRoute({List<_i21.PageRouteInfo>? children})
-      : super(
+class OtpRoute extends _i21.PageRouteInfo<OtpRouteArgs> {
+  OtpRoute({
+    _i22.Key? key,
+    String? phoneNumber,
+    List<_i21.PageRouteInfo>? children,
+  }) : super(
           OtpRoute.name,
+          args: OtpRouteArgs(
+            key: key,
+            phoneNumber: phoneNumber,
+          ),
           initialChildren: children,
         );
 
@@ -258,17 +266,42 @@ class OtpRoute extends _i21.PageRouteInfo<void> {
   static _i21.PageInfo page = _i21.PageInfo(
     name,
     builder: (data) {
-      return const _i12.OtpScreen();
+      final args =
+          data.argsAs<OtpRouteArgs>(orElse: () => const OtpRouteArgs());
+      return _i12.OtpScreen(
+        key: args.key,
+        phoneNumber: args.phoneNumber,
+      );
     },
   );
 }
 
+class OtpRouteArgs {
+  const OtpRouteArgs({
+    this.key,
+    this.phoneNumber,
+  });
+
+  final _i22.Key? key;
+
+  final String? phoneNumber;
+
+  @override
+  String toString() {
+    return 'OtpRouteArgs{key: $key, phoneNumber: $phoneNumber}';
+  }
+}
+
 /// generated route for
 /// [_i13.PhoneAuthenticationScreen]
-class PhoneAuthenticationRoute extends _i21.PageRouteInfo<void> {
-  const PhoneAuthenticationRoute({List<_i21.PageRouteInfo>? children})
-      : super(
+class PhoneAuthenticationRoute
+    extends _i21.PageRouteInfo<PhoneAuthenticationRouteArgs> {
+  PhoneAuthenticationRoute({
+    _i22.Key? key,
+    List<_i21.PageRouteInfo>? children,
+  }) : super(
           PhoneAuthenticationRoute.name,
+          args: PhoneAuthenticationRouteArgs(key: key),
           initialChildren: children,
         );
 
@@ -277,9 +310,22 @@ class PhoneAuthenticationRoute extends _i21.PageRouteInfo<void> {
   static _i21.PageInfo page = _i21.PageInfo(
     name,
     builder: (data) {
-      return const _i13.PhoneAuthenticationScreen();
+      final args = data.argsAs<PhoneAuthenticationRouteArgs>(
+          orElse: () => const PhoneAuthenticationRouteArgs());
+      return _i13.PhoneAuthenticationScreen(key: args.key);
     },
   );
+}
+
+class PhoneAuthenticationRouteArgs {
+  const PhoneAuthenticationRouteArgs({this.key});
+
+  final _i22.Key? key;
+
+  @override
+  String toString() {
+    return 'PhoneAuthenticationRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

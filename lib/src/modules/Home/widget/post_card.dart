@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:musicana/core/common/widget/custom_image_view.dart';
+import 'package:musicana/core/utility/route/app_router.gr.dart';
 
 import '../../../../core/common/image.dart';
 import '../model/post_model.dart';
@@ -33,8 +35,8 @@ class PostCard extends StatelessWidget {
               child: Column(
                 children: [
                   GestureDetector(
-                    onTap: (){
-                      
+                    onTap: () {
+                      context.router.push(ArtistProfileRoute());
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
@@ -89,10 +91,19 @@ class PostCard extends StatelessWidget {
                           style: theme.textTheme.bodySmall,
                         ),
                         SizedBox(width: 10),
-                        CustomImageView(
-                          svgPath: Images.comment,
+                        GestureDetector(
+                          onTap: () {
+                            context.router.push(CommentRoute());
+                          },
+                          child: Row(
+                            children: [
+                              CustomImageView(
+                                svgPath: Images.comment,
+                              ),
+                              Text("45", style: theme.textTheme.bodySmall),
+                            ],
+                          ),
                         ),
-                        Text("45", style: theme.textTheme.bodySmall),
                         SizedBox(width: 10),
                         CustomImageView(
                           svgPath: Images.share,

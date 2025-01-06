@@ -24,4 +24,17 @@ class TermsAndConditionsToggled extends PhoneAuthEvent {
 }
 
 class SendOtpPressed extends PhoneAuthEvent {}
-class VerifyOtp extends PhoneAuthEvent {}
+
+class VerifyOtp extends PhoneAuthEvent {
+  String? phoneNumber;
+  VerifyOtp({this.phoneNumber});
+}
+
+class OtpChanged extends PhoneAuthEvent {
+  final String otp;
+
+  OtpChanged(this.otp);
+
+  @override
+  List<Object?> get props => [otp];
+}

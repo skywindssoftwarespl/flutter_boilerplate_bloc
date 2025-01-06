@@ -18,14 +18,19 @@ class EventDetailPage extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
           child: AppBar(
-            leading: CircleAvatar(
-              backgroundColor: theme.cardColor,
-              radius: 20,
-              child: Center(
-                  child: Icon(
-                Icons.keyboard_backspace_sharp,
-                color: theme.colorScheme.onSurface,
-              )),
+            leading: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: CircleAvatar(
+                backgroundColor: theme.cardColor,
+                radius: 20,
+                child: Center(
+                    child: Icon(
+                  Icons.keyboard_backspace_sharp,
+                  color: theme.colorScheme.onSurface,
+                )),
+              ),
             ),
             title: const Text("Events"),
           ),

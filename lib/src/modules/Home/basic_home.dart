@@ -6,6 +6,7 @@ import 'package:musicana/src/modules/comment/comment_screen.dart';
 import 'package:musicana/src/modules/create_video/create_video_screen.dart';
 import 'package:musicana/src/modules/events/event_screen.dart';
 import 'package:musicana/src/modules/home/home.dart';
+import 'package:musicana/src/modules/videos/video_screen.dart';
 import '../navigation/bloc/navigation_bloc.dart';
 import 'widget/custom_bottom_navigation_bar.dart';
 
@@ -15,7 +16,7 @@ class BasicHome extends StatelessWidget {
     Home(),
     ChatScreen(),
     CreateVideoScreen(),
-    CommentScreen(),
+    VideoScreen(),
     EventScreen(),
   ];
 
